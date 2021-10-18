@@ -23,7 +23,7 @@ export default function Layout({title,keywords,description,children}) {
     )
 }
 Layout.defaultProps={
- title:"Dj-Events | Find The hottest parties",
- description:"Find The Latest DJs and Musical Events",
- keywords:"music,dj,events,parties"
+    title:"Dj-Events | Find The hottest parties",
+    description:"Find The Latest DJs and Musical Events",
+    keywords:"music,dj,events,parties"
 }
