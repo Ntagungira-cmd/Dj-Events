@@ -15,7 +15,7 @@ export default function Layout({title,keywords,description,children}) {
             <Header/>
 
             <div className={styles.container}>
-            {children}
+                {children}
             </div>
 
             <Footer/>
