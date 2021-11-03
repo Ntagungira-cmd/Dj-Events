@@ -26,7 +26,7 @@ export default function EventPage({ evt }) {
           </a>
         </div>
         <span>
-          {new Date(evt.date).toLocaleDateString('en-US')} at {evt.time}
+          {new Date(evt.date).toLocaleDateString("en-US")} at {evt.time}
         </span>
         <h1>{evt.name}</h1>
         {singleEventImage && (
@@ -38,7 +38,7 @@ export default function EventPage({ evt }) {
         )}
 
         <h3>Perfomers:</h3>
-        <p>{evt.performers}</p>
+        <p>{evt.perfomers}</p>
         <h3>Description:</h3>
         <p>{evt.description}</p>
         <h3>Venue: {evt.venue}</h3>
