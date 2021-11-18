@@ -48,6 +48,8 @@ export default function AddEventPage() {
     setValues({ ...values, [name]: value });
     // console.log({[name]: value });
     // console.log({...values});
+  
+    
   };
   return (
     <Layout title="Add New Event">
