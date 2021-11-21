@@ -1,9 +1,12 @@
 import { ToastContainer, toast } from "react-toastify";
+import { FaImage } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout";
+import Modal from "@/components/Modal";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/styles/Form.module.css";
 import { API_URL } from "@/config/index";
 import moment from "moment";
@@ -18,6 +21,11 @@ export default function EditEventPage({ evt }) {
     time: evt.time,
     description: evt.description,
   });
+  const [imagePreview, setImagePreview] = useState(
+    evt.image ? evt.image[0].formats.thumbnail.url : null
+  );
+  const [showModal, setShowModal] = useState(false);
+
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,9 +55,6 @@ export default function EditEventPage({ evt }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
-    //console.log({[name]:value});
-    // console.log({...values});
-    //console.log(evt);
   };
   return (
     <Layout title="Edit Event">
@@ -130,6 +135,21 @@ export default function EditEventPage({ evt }) {
         </div>
         <input type="submit" value="Update Event" className="btn" />
       </form>
+      {imagePreview ? (
+        <Image src={imagePreview} width={170} height={100} />
+      ) : (
+        <div>
+          <p>No Image Uploaded</p>
+        </div>
+      )}
+      <div>
+        <button onClick={() =>setShowModal(true)} className="btn-secondary">
+          <FaImage></FaImage> Set Image
+        </button>
+      </div>
+      <Modal show={showModal} onClose={()=>setShowModal(false)}>
+        IMAGE UPLOAD
+      </Modal>
     </Layout>
   );
 }
