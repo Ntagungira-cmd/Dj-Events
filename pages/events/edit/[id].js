@@ -3,6 +3,7 @@ import { FaImage } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout";
 import Modal from "@/components/Modal";
+import ImageUpload from "@/components/ImageUpload";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -22,7 +23,7 @@ export default function EditEventPage({ evt }) {
     description: evt.description,
   });
   const [imagePreview, setImagePreview] = useState(
-    evt.image ? evt.image[0].formats.thumbnail.url : null
+    evt.image.length == 0 ? null : evt.image[0].formats.thumbnail.url
   );
   const [showModal, setShowModal] = useState(false);
 
@@ -55,6 +56,14 @@ export default function EditEventPage({ evt }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+  const imageUploaded = async (e) => {
+    const res = await fetch(`${API_URL}/events/${evt.id}`);
+    const data = await res.json();
+    //const [singleEventImage] = data.image;
+    //console.log(data);
+    //setImagePreview(data.image.formats.thumbnail.url);
+    setShowModal(false);
   };
   return (
     <Layout title="Edit Event">
@@ -135,7 +144,7 @@ export default function EditEventPage({ evt }) {
         </div>
         <input type="submit" value="Update Event" className="btn" />
       </form>
-      {imagePreview ? (
+      {imagePreview != null ? (
         <Image src={imagePreview} width={170} height={100} />
       ) : (
         <div>
@@ -143,12 +152,12 @@ export default function EditEventPage({ evt }) {
         </div>
       )}
       <div>
-        <button onClick={() =>setShowModal(true)} className="btn-secondary">
+        <button onClick={() => setShowModal(true)} className="btn-secondary">
           <FaImage></FaImage> Set Image
         </button>
       </div>
-      <Modal show={showModal} onClose={()=>setShowModal(false)}>
-        IMAGE UPLOAD
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <ImageUpload evtId={evt.id} imageUploaded={imageUploaded} />
       </Modal>
     </Layout>
   );
