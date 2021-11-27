@@ -10,7 +10,7 @@ import { API_URL } from "@/config/index";
 export default function AddEventPage() {
   const [values, setValues] = useState({
     name: "",
-    performers: "",
+    perfomers: "",
     venue: "",
     address: "",
     date: "",
@@ -48,8 +48,6 @@ export default function AddEventPage() {
     setValues({ ...values, [name]: value });
     // console.log({[name]: value });
     // console.log({...values});
-  
-    
   };
   return (
     <Layout title="Add New Event">
@@ -68,12 +66,12 @@ export default function AddEventPage() {
             />
           </div>
           <div>
-            <label htmlFor="performers">Performers</label>
+            <label htmlFor="performers">Perfomers</label>
             <input
               type="text"
-              name="performers"
+              name="perfomers"
               id="performers"
-              value={values.performers}
+              value={values.perfomers}
               onChange={handleInputChange}
             />
           </div>

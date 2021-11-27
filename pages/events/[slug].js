@@ -23,7 +23,7 @@ export default function EventPage({ evt }) {
       }
     }
   };
-  //console.log(singleEventImage.formats.thumbnail.url);
+ //console.log(singleEventImage);
   return (
     <Layout>
       <div className={styles.event}>
@@ -56,7 +56,7 @@ export default function EventPage({ evt }) {
         <h3>Description:</h3>
         <p>{evt.description}</p>
         <h3>Venue: {evt.venue}</h3>
-        <p>{evt.address}</p>
+        <h3>Address: {evt.address}</h3>
         <Link href="/events">
           <a className={styles.back}>{"<"} Go Back</a>
         </Link>

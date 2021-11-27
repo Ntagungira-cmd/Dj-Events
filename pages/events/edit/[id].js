@@ -82,10 +82,10 @@ export default function EditEventPage({ evt }) {
             />
           </div>
           <div>
-            <label htmlFor="performers">Performers</label>
+            <label htmlFor="performers">Perfomers</label>
             <input
               type="text"
-              name="performers"
+              name="perfomers"
               id="performers"
               value={values.perfomers}
               onChange={handleInputChange}
