@@ -8,7 +8,10 @@
     padding: 0 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-  
+  /* .header nav{
+    display: flex;
+    width:200px;
+  } */
   .header a {
     color: #333;
     margin-right: 20px;
