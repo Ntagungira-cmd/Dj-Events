@@ -23,6 +23,7 @@ export default function Header() {
             </Link>
           </li>
           {user ? (
+            //If logged In
             <>
               {" "}
               <li>
@@ -30,8 +31,22 @@ export default function Header() {
                   <a>Add Event</a>
                 </Link>
               </li>
+              <li>
+                <Link href="/accounts/dashboard">
+                  <a>Dashboard</a>
+                </Link>
+              </li>
+              <li>
+                <buttton onClick={() => logout()}>
+                  <a className="btn-secondary btn-icon">
+                    <FaSignOutAlt />
+                    Logout
+                  </a>
+                </buttton>
+              </li>
             </>
           ) : (
+            //If not logged In
             <>
               <li>
                 <Link href="/accounts/login">

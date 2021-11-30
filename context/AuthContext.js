@@ -4,26 +4,26 @@ import { API_URL } from "@/config/index";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState({name:"Natg"});
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState();
   const [error, setError] = useState();
 
   //register a user
-  const register = (user) => {
+  const register = async (user) => {
     console.log(user);
   };
   //log a user  in
-  const login = ({ email: identifier, password }) => {
+  const login = async ({ email: identifier, password }) => {
     console.log({ identifier, password });
   };
 
   //log a user out
-  const logout = () => {
+  const logout = async () => {
     console.log("Logged out");
   };
 
   //check if a user is logged in
-  const checkUserLoggedIn = () => {
+  const checkUserLoggedIn = async () => {
     console.log("Check");
   };
 
