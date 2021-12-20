@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import {AuthProvider} from "@/context/AuthContext";
 import Loading from "@/components/Loading";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -20,10 +21,10 @@ function MyApp({ Component, pageProps }) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
   return (
-    <>
+    <AuthProvider>
       <Loading loading={isLoading} />
       <Component {...pageProps} />
-    </>
+    </AuthProvider>
   );
 }
 
