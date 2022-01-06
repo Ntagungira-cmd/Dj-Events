@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { API_URL } from "@/config/index";
+import { NEXT_URL } from "@/config/index";
 
 const AuthContext = createContext();
 
@@ -14,7 +14,18 @@ export const AuthProvider = ({ children }) => {
   };
   //log a user  in
   const login = async ({ email: identifier, password }) => {
-    console.log({ identifier, password });
+    const res = await fetch(`${NEXT_URL}/api/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier,
+        password,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
   };
 
   //log a user out
